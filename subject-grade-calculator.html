@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GradeKalkyu</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+    </head>
+    <body class="body">
+
+        <header class="header-bar">
+            <div class="logo">
+                    <a href="home-page.html"><img src="GradeKalkyuLogo.png" alt="GradeKalkyu"></a>
+            </div>
+            <div class="right-links">
+                    <a href="overall-grade-calculator.html">Overall Grade Calculator</a>
+                    <a href="subject-grade-calculator.html">Subject Grade Calculator</a>
+            </div>
+        </header>
+        <main>
+            <div class = "calculator-container">
+                <h1 class="calculator-title">Subject Grade Calculator</h1>
+                
+                <div class="calculator-section">
+                    <h2>Calculate Current Grade</h2>
+
+                    <div id="components-container">
+                        
+                    </div>
+
+                    <div class="calculator-buttons">
+                        <button type="button" onclick="addComponentRow()" class="add-button">Add Component</button>
+                        <button type="button" onclick="calculateSubjectGrade()" class="calculate-button">Calculate Current Grade</button>
+                    </div>
+
+                    <div id="current-grade-result" class="result-container">
+                        <h2>Your Current Grade:</h2>
+                        <p id="subject-grade" class="subject-grade"></p>
+                    </div>
+                    
+                    <div class="calculate-required-grade">
+                        <h2>Calculate Required Grade</h2>
+
+                        <div class="required-grade-inputs">
+                            <div class="input-group">
+                                <label for="missing-weight">Component Weight (%):</label>
+                                <input type="number" id="missing-weight" min="0" max="100" placeholder="Enter component weight">
+
+                                <label for="target-grade">Target Grade (%):</label>
+                                <input type="number" id="target-grade" min="0" max="100" placeholder="Enter target grade">
+                            </div>
+
+                            <button type="button" onclick="calculateRequiredGrade()" class="calculate-button">Calculate Required Grade</button>
+                        </div>
+
+                        <div id="required-grade-result" class="result-container">
+                            <h2>Required Grade:</h2>
+                            <p id="required-grade" class="final-grade">--</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+        </main>
+        <footer class="footer-bar">
+            <p class="footer-content">2024 GradeKalkyu |  albert.asia.caro@gmail.com</p>
+        </footer>
+
+        <script src="javascript/subject-grade-calculator.js"></script>
+    </body>
+</html>
