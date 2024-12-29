@@ -65,26 +65,21 @@ function calculateOverallGrade(){
     }
 
     const finalGrade = totalWeightedGrade/totalUnits;
-    document.getElementById('final-grade').textContent = finalGrade.toFixed(4);
+
+    document.getElementById('final-grade').textContent = finalGrade.toFixed(4)
+
+    if(finalGrade<=1.50 && finalGrade>=1.00){
+        document.getElementById('congrats-message').textContent = "WOW! You're a University Scholar!";
+    }else if(finalGrade<=1.75 && finalGrade>1.50){
+        document.getElementById('congrats-message').textContent = "WOW! You're a College Scholar!";
+    }
+    
+    
+    
 }
 
 document.head.insertAdjacentHTML('beforeend', `
     <style>
-        .remove-button {
-            background: #718355;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            font-size: 16px;
-            line-height: 1;
-            padding: 0;
-        }
-        .remove-button:hover {
-            background: #cc0000;
-        }
         
         .component-row, .subject-row {
             display: flex;
