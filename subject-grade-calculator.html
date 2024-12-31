@@ -23,10 +23,8 @@
         </header>
         <main>
             <div class = "calculator-container">
-                <h1 class="calculator-title">Subject Grade Calculator</h1>
-                
                 <div class="calculator-section">
-                    <h2>Calculate Current Grade</h2>
+                    <h1 class="calculator-title">Subject Grade Calculator</h1>
 
                     <div id="components-container">
                         
@@ -39,19 +37,16 @@
 
                     <div id="current-grade-result" class="result-container">
                         <h2>Your Current Grade:</h2>
-                        <p id="subject-grade" class="subject-grade"></p>
+                        <p id="subject-grade" class="subject-grade">--</p>
                     </div>
                     
                     <div class="calculate-required-grade">
                         <h2>Calculate Required Grade</h2>
 
                         <div class="required-grade-inputs">
-                            <div class="input-group">
-                                <label for="missing-weight">Component Weight (%):</label>
-                                <input type="number" id="missing-weight" min="0" max="100" placeholder="Enter component weight">
 
-                                <label for="target-grade">Target Grade (%):</label>
-                                <input type="number" id="target-grade" min="0" max="100" placeholder="Enter target grade">
+                            <div id="remaining-grade-input" class="input-group">
+
                             </div>
 
                             <button type="button" onclick="calculateRequiredGrade()" class="calculate-button">Calculate Required Grade</button>
@@ -60,6 +55,7 @@
                         <div id="required-grade-result" class="result-container">
                             <h2>Required Grade:</h2>
                             <p id="required-grade" class="final-grade">--</p>
+                            <p id="required-grade-message" class="final-grade"><br></p>
                         </div>
 
                     </div>

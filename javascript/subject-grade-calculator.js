@@ -71,9 +71,37 @@ function calculateSubjectGrade(){
     document.getElementById('subject-grade').textContent = finalGrade.toFixed(4);
 }
 
+document.addEventListener('DOMContentLoaded', () =>{
+
+    document.getElementById("remaining-grade-input").innerHTML='';
+
+    for(let i=0; i<1; i++){
+        missingComponentRow();
+    }
+});
+
+function missingComponentRow(){
+    const container = document.getElementById("remaining-grade-input");
+    const rowDiv = document.createElement("div");
+    rowDiv.className = "missing-component-row";
+    rowDiv.innerHTML = `
+        <input type="number" id="missing-weight" class="missing-component-weight" placeholder="Missing Component Weight" min="0" max="100" required>
+        <input type="number" id="target-grade" class="component-grade" placeholder="Target Grade" min="0" max="100" required>
+        <input type="number" id="component-total-score" class="component-total-score" placeholder="Total Score of Component" min="0" max="100" required onchange="updateRemainingWeight()">
+    `;
+
+    container.appendChild(rowDiv);
+}
+
 function calculateRequiredGrade(){
     const targetGrade = parseFloat(document.getElementById('target-grade').value);
     const missingWeight = parseFloat(document.getElementById('missing-weight').value);
+    const highestPossibleScore = parseFloat(document.getElementById('component-total-score').value);
+    let hasValue = false;
+
+    if(highestPossibleScore>0){
+        hasValue = true;
+    }
 
     if(isNaN(targetGrade)||isNaN(missingWeight)){
         alert('Please enter fill in all fields correctly');
@@ -100,17 +128,30 @@ function calculateRequiredGrade(){
 
     const remainingWeight = missingWeight;
     const requiredGrade = ((targetGrade) - (currentWeightedGrade)) / (remainingWeight/100);
+    const neededScore = highestPossibleScore * (requiredGrade/100);
 
-    if (requiredGrade < 0) {
-        document.getElementById('required-grade').textContent = 
-            "Target grade already achieved!";
-    } else if (requiredGrade > 100) {
-        document.getElementById('required-grade').textContent = 
-            "Target grade not possible";
-    } else {
-        document.getElementById('required-grade').textContent = 
-            requiredGrade.toFixed(4);
+    if(hasValue){
+        if (requiredGrade < 0) {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4) + " or " + neededScore + "/" + highestPossibleScore;
+            document.getElementById('required-grade-message').textContent = "Target grade already achieved!";
+        } else if (requiredGrade > 100) {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4) + " or " + neededScore + "/" + highestPossibleScore;
+            document.getElementById('required-grade-message').textContent = "Target grade is not possible";
+        } else {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4) + " or " + neededScore + "/" + highestPossibleScore;
+        }
+    }else{
+        if (requiredGrade < 0) {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4);
+            document.getElementById('required-grade-message').textContent = "Target grade already achieved!";
+        } else if (requiredGrade > 100) {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4);
+            document.getElementById('required-grade-message').textContent = "Target grade is not possible";
+        } else {
+            document.getElementById('required-grade').textContent = requiredGrade.toFixed(4);
+        }
     }
+
 }
 
 function updateRemainingWeight(){

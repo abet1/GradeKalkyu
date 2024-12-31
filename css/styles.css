@@ -37,6 +37,7 @@ main{
     text-align: center;
     font-weight: 700;
     margin-bottom: 0;
+    justify-content: center;
 }
 
 .calculate-button:hover {
@@ -58,28 +59,6 @@ main{
     padding: 1rem;
     background-color: #f8f9fa;
     border-radius: 4px;
-}
-
-@media (max-width: 768px) {/*this code's purpose is to cater for mobile users*/
-    .header-bar {
-        flex-direction: column;
-        padding: 10px 5px;
-    }
-
-    .right-links {
-        margin-right: 0;
-        margin-top: 10px;
-    }
-
-    .button-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .welcome-message {
-        margin: 1rem;
-    }
 }
 
 .welcome-heading {
@@ -265,6 +244,12 @@ main{
     font-weight: bold;
 }
 
+.subject-grade {
+    font-size: 2rem;
+    color: #718355;
+    font-weight: bold;
+}
+
 .required-grade {
     margin-top: 2rem;
 }
@@ -316,4 +301,165 @@ main{
 }
 .remove-button:hover {
     background: rgb(151, 23, 23)
+}
+
+.calculate-required-grade {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    justify-content: center;
+}
+
+.missing-component-row {
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 10px; 
+}
+
+.missing-component-row input {
+    flex: 1; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+
+
+
+/*this css code is for the website's compatibility with mobile devices*/
+@media (max-width: 768px) {
+    .header-bar {
+        flex-direction: column;
+        padding: 10px 5px;
+        position: relative;
+    }
+
+    .right-links {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    
+    main {
+        padding: 1rem;
+        margin-top: 100px;
+    }
+
+    .welcome-heading {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+
+    .calculator-container {
+        width: 95%;
+        margin: 20px auto 0;
+        padding: 10px;
+    }
+
+    .calculator-section {
+        padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    .subjects-row, 
+    .components-row {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .subjects-row input,
+    .components-row input {
+        flex: 1;
+        min-width: 0;
+        font-size: 14px;
+        padding: 8px 4px;
+    }
+
+    .remove-button {
+        min-width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+
+    .calculator-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 500px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .calculate-button,
+    .add-button {
+        width: 45%;
+        min-width: 120px;
+        font-size: 16px;
+        padding: 0.8rem 0.5rem;
+        white-space: normal;
+        height: auto;
+    }
+
+    .result-container {
+        margin-top: 1.5rem;
+        padding: 0.8rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .final-grade,
+    .subject-grade {
+        font-size: 1.5rem;
+    }
+
+
+    .footer-content {
+        margin-left: 0;
+        padding: 0 1rem;
+    }
+}
+
+/*for very small devices */
+@media (max-width: 380px) {
+    .subjects-row,
+    .components-row {
+        gap: 4px;
+    }
+
+    .subjects-row input,
+    .components-row input {
+        font-size: 12px;
+        padding: 6px 2px;
+    }
+
+    .remove-button {
+        min-width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+
+    .calculator-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .calculate-button,
+    .add-button {
+        width: 80%;
+        font-size: 16px;
+    }
 }
