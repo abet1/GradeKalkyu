@@ -324,6 +324,88 @@ main{
 }
 
 
+.subjects-row,
+.components-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    align-items: center;
+}
+
+
+.subject-name,
+.component-name {
+    flex: 1.4;
+    min-width: 200px;
+    padding: 8px;
+}
+
+.units,
+.grade,
+.component-grade,
+.total-component-grade,
+.component-weight {
+    flex: 1;
+    min-width: 100px;
+    padding: 8px;
+}
+
+
+.missing-component-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.missing-component-row input {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px;
+}
+
+
+input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.remove-button {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .subjects-row,
+    .components-row,
+    .missing-component-row {
+        gap: 8px;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 8px 4px;
+    }
+}
+
+@media (max-width: 380px) {
+    .subjects-row,
+    .components-row,
+    .missing-component-row {
+        gap: 4px;
+    }
+
+    input {
+        font-size: 12px;
+        padding: 6px 2px;
+    }
+}
+
+
 
 /*this css code is for the website's compatibility with mobile devices*/
 @media (max-width: 768px) {
@@ -425,14 +507,15 @@ main{
         font-size: 1.5rem;
     }
 
-
     .footer-content {
         margin-left: 0;
         padding: 0 1rem;
     }
 }
 
-/*for very small devices */
+
+
+/* Additional breakpoint for very small devices */
 @media (max-width: 380px) {
     .subjects-row,
     .components-row {

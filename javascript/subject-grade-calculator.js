@@ -14,7 +14,8 @@ function addComponentRow(){
     rowDiv.className = "components-row";
     rowDiv.innerHTML = `
         <input type="text" class="component-name" placeholder="Component Name" required>
-        <input type="number" class="component-grade" placeholder="Grade" min="0" max="100" required>
+        <input type="number" class="component-grade" placeholder="Your Grade" min="0" max="100" required>
+         <input type="number" class="total-component-grade" placeholder="Total Grade" min="0" max="100" required>
         <input type="number" class="component-weight" placeholder="Weight" min="0" max="100" required onchange="updateRemainingWeight()">
         <button type="button" class="remove-button" onclick="removeComponentRow(this)">×</button>
     `;
@@ -39,20 +40,22 @@ function calculateSubjectGrade(){
     let totalWeightedGrade = 0;
     let totalWeight = 0;
     let isValid = true;
+    let grade = 0;
 
     rows.forEach(row => {
-        const grade = parseFloat(row.querySelector('.component-grade').value);
+        const totalGrade = parseFloat(row.querySelector('.total-component-grade').value);
+        const userGrade = parseFloat(row.querySelector('.component-grade').value);
         const weight = parseFloat(row.querySelector('.component-weight').value);
 
-        if(isNaN(weight)||isNaN(grade)){
+        if(isNaN(weight)||isNaN(userGrade)||isNaN(totalGrade)){
             return;
         }
 
-        if(grade<0 || grade>100 || weight<0 || weight>100){
+        if(userGrade<0 || userGrade>100 || weight<0 || weight>100 || totalGrade<0){
             isValid = false;
             return;
         }
-        
+        grade = (userGrade/totalGrade)*100;
         totalWeightedGrade += (weight*grade);
         totalWeight += weight; 
     });
