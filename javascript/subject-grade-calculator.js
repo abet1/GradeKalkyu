@@ -14,8 +14,8 @@ function addComponentRow(){
     rowDiv.className = "components-row";
     rowDiv.innerHTML = `
         <input type="text" class="component-name" placeholder="Component Name" required>
-        <input type="number" class="component-grade" placeholder="Your Grade" min="0" max="100" required>
-         <input type="number" class="total-component-grade" placeholder="Total Grade" min="0" max="100" required>
+        <input type="number" class="component-grade" placeholder="Your Grade" min="0" required>
+         <input type="number" class="total-component-grade" placeholder="Total Grade" min="0" required>
         <input type="number" class="component-weight" placeholder="Weight" min="0" max="100" required onchange="updateRemainingWeight()">
         <button type="button" class="remove-button" onclick="removeComponentRow(this)">×</button>
     `;
@@ -51,7 +51,7 @@ function calculateSubjectGrade(){
             return;
         }
 
-        if(userGrade<0 || userGrade>100 || weight<0 || weight>100 || totalGrade<0){
+        if(userGrade<0 || weight<0 || weight>100 || totalGrade<0){
             isValid = false;
             return;
         }
